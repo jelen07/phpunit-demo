@@ -59,7 +59,12 @@ $data = [
     ], \RuntimeException::class],
 ];
 
-$calculator = new Calculator();
+$calculator = new Calculator(
+    new \Demo\Addition(),
+    new \Demo\Subtraction(),
+    new \Demo\Multiplication(),
+    new \Demo\Division()
+);
 $errors = [];
 foreach ($data as list($input, $expected)) {
     try {

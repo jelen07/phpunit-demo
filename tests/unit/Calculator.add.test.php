@@ -31,7 +31,12 @@ $data = [
     ],
 ];
 
-$calculator = new Calculator();
+$calculator = new Calculator(
+    new \Demo\Addition(),
+    new \Demo\Subtraction(),
+    new \Demo\Multiplication(),
+    new \Demo\Division()
+);
 foreach ($data as $expected => $input) {
     try {
         $result = $calculator->add(...$input);
