@@ -9,7 +9,7 @@ class Division implements CalculateInterface
         if ($b !== 0) {
             return $a / $b;
         } else {
-            throw new \RuntimeException("Cannot divide by zero");
+            throw new DivisionByZeroException("Cannot divide by zero");
         }
     }
 }

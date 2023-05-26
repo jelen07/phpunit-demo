@@ -7,9 +7,30 @@ use PHPUnit\Framework\TestCase;
 
 final class AdditionTest extends TestCase
 {
-    public function testAddition(): void
+    private readonly Addition $addition;
+
+    public function setUp(): void
     {
-        $addition = new Addition();
-        $this->assertSame(3, $addition->calculate(1, 2));
+        $this->addition = new Addition();
+    }
+
+    /**
+     * @test
+     * @dataProvider giveMeSomeTestingData
+     */
+    public function happyPath($a, $b, $expected): void
+    {
+        $this->assertSame($expected, $this->addition->calculate($a, $b));
+    }
+
+    public static function giveMeSomeTestingData(): array
+    {
+        return [
+            [1, 2, 3],
+            [2, 3, 5],
+            [3, 4, 7],
+            [-1, 1, 0],
+            [0, 0, 0],
+        ];
     }
 }
